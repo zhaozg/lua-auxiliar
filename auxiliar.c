@@ -7,7 +7,7 @@
 
 #include "auxiliar.h"
 
-#if LUA_VERSION_NUM==503
+#if LUA_VERSION_NUM<503
 #include "c-api/compat-5.3.h"
 #endif
 
@@ -147,7 +147,7 @@ void *auxiliar_getgroupudata(lua_State *L, const char *groupname, int objidx) {
 * otherwise
 \*-------------------------------------------------------------------------*/
 void *auxiliar_getclassudata(lua_State *L, const char *classname, int objidx) {
-    return luaL_checkudata(L, objidx, classname);
+    return luaL_testudata(L, objidx, classname);
 }
 
 /*-------------------------------------------------------------------------*\
