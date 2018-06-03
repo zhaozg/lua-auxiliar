@@ -37,7 +37,8 @@ The origin auxiliar is part of [luasocket](https://github.com/diegonehab/luasock
 
 ## Update
 
-TODO
+I do minimual change, and add a few APIs for [lui](https://github.com/zhaozg/lui) and [lua-openssl](https://github.com/zhaozg/lua-openssl).
+TODO more
 
 ## License
 ```text
