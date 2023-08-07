@@ -58,7 +58,7 @@ int auxiliar_tostring(lua_State *L) {
     lua_pushstring(L, "class");
     lua_gettable(L, -2);
     if (!lua_isstring(L, -1)) goto error;
-    sprintf(buf, "%p", lua_touserdata(L, 1));
+    snprintf(buf, sizeof(buf), "%p", lua_touserdata(L, 1));
     lua_pushfstring(L, "%s: %s", lua_tostring(L, -1), buf);
     return 1;
 error:
@@ -95,7 +95,7 @@ void *auxiliar_checkclass(lua_State *L, const char *classname, int objidx) {
     void *data = auxiliar_getclassudata(L, classname, objidx);
     if (!data) {
         char msg[45];
-        sprintf(msg, "%.35s expected", classname);
+        snprintf(msg, sizeof(msg), "%.35s expected", classname);
         luaL_argerror(L, objidx, msg);
     }
     return data;
@@ -109,7 +109,7 @@ void *auxiliar_checkgroup(lua_State *L, const char *groupname, int objidx) {
     void *data = auxiliar_getgroupudata(L, groupname, objidx);
     if (!data) {
         char msg[45];
-        sprintf(msg, "%.35s expected", groupname);
+        snprintf(msg, sizeof(msg), "%.35s expected", groupname);
         luaL_argerror(L, objidx, msg);
     }
     return data;
